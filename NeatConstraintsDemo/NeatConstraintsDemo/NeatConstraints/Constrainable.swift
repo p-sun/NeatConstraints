@@ -26,7 +26,7 @@ import UIKit
 extension UIView: Constrainable {
     
     @discardableResult
-    func prepareForAutolayout() -> Self {
+    public func prepareForAutolayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false
         return self
     }
@@ -35,10 +35,10 @@ extension UIView: Constrainable {
 extension UILayoutGuide: Constrainable {
     
     @discardableResult
-    func prepareForAutolayout() -> Self { return self }
+    public func prepareForAutolayout() -> Self { return self }
 }
 
-protocol Constrainable {
+public protocol Constrainable {
     
     var topAnchor: NSLayoutYAxisAnchor { get }
     var bottomAnchor: NSLayoutYAxisAnchor { get }

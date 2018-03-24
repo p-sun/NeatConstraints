@@ -25,17 +25,17 @@
 
 import UIKit
 
-enum ConstraintRelation: Int {
+public enum ConstraintRelation: Int {
     case equal = 0
     case equalOrLess = -1
     case equalOrGreater = 1
 }
 
-extension UIView {
+public extension UIView {
     
     // MARK: - Compound Constraints
     
-    func addSubviewsForAutolayout(_ views: UIView...) {
+    public func addSubviewsForAutolayout(_ views: UIView...) {
         views.forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             addSubview(view)
@@ -43,7 +43,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainEdges(to otherview: UIView, insets: UIEdgeInsets = .zero, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    public func constrainEdges(to otherview: UIView, insets: UIEdgeInsets = .zero, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         
         let constrainable = safeConstrainable(for: otherview, usingSafeArea: usingSafeArea)
@@ -61,7 +61,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainEdgesHorizontally(to otherview: UIView, leftInsets: CGFloat = 0, rightInsets: CGFloat = 0, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    public func constrainEdgesHorizontally(to otherview: UIView, leftInsets: CGFloat = 0, rightInsets: CGFloat = 0, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         prepareForAutolayout()
         
         var constraints = [NSLayoutConstraint]()
@@ -77,7 +77,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainEdgesVertically(to otherview: UIView, topInsets: CGFloat = 0, bottomInsets: CGFloat = 0, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    public func constrainEdgesVertically(to otherview: UIView, topInsets: CGFloat = 0, bottomInsets: CGFloat = 0, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         
         let constrainable = safeConstrainable(for: otherview, usingSafeArea: usingSafeArea)
@@ -91,7 +91,7 @@ extension UIView {
     }
     
     
-    func safeConstrainable(for otherview: UIView?, usingSafeArea: Bool) -> Constrainable {
+    public func safeConstrainable(for otherview: UIView?, usingSafeArea: Bool) -> Constrainable {
         guard let otherview = otherview else {
             fatalError("View is nil!")
         }
@@ -107,7 +107,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainSize(_ size: CGSize, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    public func constrainSize(_ size: CGSize, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForAutolayout()
         
         let constraints = [
@@ -123,7 +123,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainSize(to view: Constrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    public func constrainSize(to view: Constrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForAutolayout()
         
         let constraints = [
@@ -139,7 +139,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainAspectRatio(to size: CGSize, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainAspectRatio(to size: CGSize, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return heightAnchor.constraint(equalTo: widthAnchor,
                                        multiplier: size.height/size.width).set(active: isActive)
@@ -148,7 +148,7 @@ extension UIView {
     // MARK: - Basic Elemental Constraints
     
     @discardableResult
-    func constrainWidth(_ width: CGFloat, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainWidth(_ width: CGFloat, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -159,7 +159,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainWidth(to view: Constrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainWidth(to view: Constrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -170,7 +170,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainHeight(_ height: CGFloat, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainHeight(_ height: CGFloat, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -181,7 +181,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainHeight(to view: Constrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainHeight(to view: Constrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -192,13 +192,13 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainLeadingToTrailing(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainLeadingToTrailing(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainLeading(to: view, view.trailingAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainLeading(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainLeading(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -209,13 +209,13 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainLeftToRight(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainLeftToRight(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainLeft(to: view, view.rightAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainLeft(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainLeft(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -226,13 +226,13 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainTrailingToLeading(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainTrailingToLeading(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainTrailing(to: view, view.leadingAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainTrailing(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainTrailing(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -243,13 +243,13 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainRightToLeft(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainRightToLeft(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainRight(to: view, view.leftAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainRight(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainRight(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -260,13 +260,13 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainTopToBottom(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainTopToBottom(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainTop(to: view, view.bottomAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainTop(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainTop(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -279,7 +279,7 @@ extension UIView {
     /// Constrain to all sides, within the safe area.
     /// NOTE: Not true for the bottom. TODO
     @discardableResult
-    func constrainWithinLayoutGuide(of viewController: UIViewController, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    public func constrainWithinLayoutGuide(of viewController: UIViewController, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         let topConstraint = constrainTopToTopLayoutGuide(of: viewController, inset: insets.top)
         let horizontalConstraints = constrainEdgesHorizontally(to: viewController.view, leftInsets: insets.left, rightInsets: insets.right)
         let bottomConstraint = constrainBottom(to: viewController.view, offset: -insets.bottom)
@@ -287,7 +287,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainTopToTopLayoutGuide(of viewController: UIViewController, inset: CGFloat = 0) -> NSLayoutConstraint {
+    public func constrainTopToTopLayoutGuide(of viewController: UIViewController, inset: CGFloat = 0) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         let topConstraint: NSLayoutConstraint
@@ -303,13 +303,13 @@ extension UIView {
 
     
     @discardableResult
-    func constrainBottomToTop(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainBottomToTop(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         return constrainBottom(to: view, view.topAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func constrainBottom(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainBottom(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         switch relation {
@@ -320,7 +320,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainCenterX(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainCenterX(to view: Constrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         let constraint = centerXAnchor.constraint(equalTo: anchor ?? view.centerXAnchor, constant: offset).with(priority)
@@ -329,7 +329,7 @@ extension UIView {
     }
     
     @discardableResult
-    func constrainCenterY(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainCenterY(to view: Constrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
         
         let constraint = centerYAnchor.constraint(equalTo: anchor ?? view.centerYAnchor, constant: offset).with(priority)
