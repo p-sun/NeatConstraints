@@ -22,7 +22,7 @@ An clean way to create `NSLayoutConstraints` programmatically! Easier to use tha
 
 ## How about small nibs?
 
-- That being said, nibs are fine for constraining tiny views. [The NibView protocol](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/NeatConstraints/NibView.swift) could make your life easier because now you can go `let view: CustomView = CustomView.instanceFromNib()`
+- That being said, nibs are fine for constraining tiny views. [The NibView protocol](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/NeatConstraints/NibView.swift) could make your life easier because now you can go `let view: CustomView = CustomView.instanceFromNib()` given that you have setup a  `CustomView.xib`.
 
 ## ViewController Demo
 - See how it's used in [ViewController.swift](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/ViewController.swift).
