@@ -1,5 +1,7 @@
 # NeatConstraints
-An clean way to create `NSLayoutConstraints` programmatically! Easier to use than the native API, and easier to skim and debug than most storyboards since you don't need to click through many subviews to see all the constraints. Heavily modified from [TinyConstraints](https://github.com/roberthein/TinyConstraints).
+An clean way to create `NSLayoutConstraints` programmatically! Easier to use than the native API, and easier to skim and debug than most storyboards since you don't need to click through many subviews to see all the constraints.
+
+Heavily modified from [TinyConstraints](https://github.com/roberthein/TinyConstraints).
 
 ## How to Install
 - Drag the `NeatConstraints` folder to your project. Done.
@@ -14,7 +16,7 @@ An clean way to create `NSLayoutConstraints` programmatically! Easier to use tha
 
 - Programmatic creation of all things means you can easily modularize all things instead of setting them in the storyboard manually! Like text font and color!
 
-- You can share views created programically easier than than you can share nibs. Sharing is caring. Love yourself -- reuse cool stuff from previous projects, [like cool custom menu with custom buttons](https://github.com/p-sun/Rounded-Bordered-Button-Menus).
+- You can share views created programically easier than than you can share nibs. Sharing is caring. Love yourself -- reuse cool stuff from previous projects, [like cool custom menu with custom buttons](https://github.com/p-sun/Rounded-Bordered-Button-Menus). Really, all major open-source libraries are fully programic.
 
 - Easy read the difference in code reviews.
 
@@ -22,7 +24,7 @@ An clean way to create `NSLayoutConstraints` programmatically! Easier to use tha
 
 ## How about small nibs?
 
-- That being said, nibs are fine for constraining tiny views. [The NibView protocol](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/NeatConstraints/NibView.swift) could make your life easier because now you can go `let view: CustomView = CustomView.instanceFromNib()` given that you have setup a  `CustomView.xib`.
+- That being said, nibs are fine for constraining tiny views that you don't plan to reuse in another app, such as a UserCollectionViewCell. [The NibView protocol](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/NeatConstraints/NibView.swift) could make your life easier because now you can go `let view: CustomView = CustomView.instanceFromNib()` given that you have setup a  `CustomView.xib`.
 
 ## ViewController Demo
 - See how it's used in [ViewController.swift](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/ViewController.swift).
