@@ -4,7 +4,7 @@ An clean way to create `NSLayoutConstraints` programmatically! Easier to use tha
 ## How to Install
 - Drag the `NeatConstraints` folder to your project. Done.
 
-## Why create constraints programmatically?
+## Why create constraints programmatically instead of with storyboards?
 
 - It's often easier to debug than storyboards because you can read all the constraints at once, instead of clicking through many views on the storyboards. It's easy to miss details on storyboards, especially if you set priorities.
 
@@ -14,7 +14,15 @@ An clean way to create `NSLayoutConstraints` programmatically! Easier to use tha
 
 - Programmatic creation of all things means you can easily modularize all things instead of setting them in the storyboard manually! Like text font and color!
 
+- You can share views created programically easier than than you can share nibs. Sharing is caring. Love yourself -- reuse cool stuff from previous projects, [like cool custom menu with custom buttons](https://github.com/p-sun/Rounded-Bordered-Button-Menus).
+
+- Easy read the difference in code reviews.
+
 - "Storyboards are not modular. Nibs are annoying to use. It's really the best of bad options" - @CarlNathan
+
+## How about small nibs?
+
+- That being said, nibs are fine for constraining tiny views. [The NibView protocol](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/NeatConstraints/NibView.swift) could make your life easier because now you can go `let view: CustomView = CustomView.instanceFromNib()`
 
 ## ViewController Demo
 - See how it's used in [ViewController.swift](https://github.com/p-sun/NeatConstraints/blob/master/NeatConstraintsDemo/NeatConstraintsDemo/ViewController.swift).
