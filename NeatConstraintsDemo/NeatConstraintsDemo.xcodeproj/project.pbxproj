@@ -15,7 +15,6 @@
 		85CCE2252063EC5E000560C3 /* NeatConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE2242063EC5E000560C3 /* NeatConstraintsTests.swift */; };
 		85CCE2362063ECAD000560C3 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE2322063ECAD000560C3 /* Constrainable.swift */; };
 		85CCE2372063ECAD000560C3 /* Constraints+Activation+Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE2332063ECAD000560C3 /* Constraints+Activation+Priority.swift */; };
-		85CCE2382063ECAD000560C3 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE2342063ECAD000560C3 /* NibView.swift */; };
 		85CCE2392063ECAD000560C3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE2352063ECAD000560C3 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		85CCE2262063EC5E000560C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85CCE2322063ECAD000560C3 /* Constrainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		85CCE2332063ECAD000560C3 /* Constraints+Activation+Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+Activation+Priority.swift"; sourceTree = "<group>"; };
-		85CCE2342063ECAD000560C3 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		85CCE2352063ECAD000560C3 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +108,6 @@
 			children = (
 				85CCE2322063ECAD000560C3 /* Constrainable.swift */,
 				85CCE2332063ECAD000560C3 /* Constraints+Activation+Priority.swift */,
-				85CCE2342063ECAD000560C3 /* NibView.swift */,
 				85CCE2352063ECAD000560C3 /* UIView+Constraints.swift */,
 			);
 			path = NeatConstraints;
@@ -224,7 +221,6 @@
 				85CCE2372063ECAD000560C3 /* Constraints+Activation+Priority.swift in Sources */,
 				85CCE2392063ECAD000560C3 /* UIView+Constraints.swift in Sources */,
 				85CCE2102063EC5E000560C3 /* AppDelegate.swift in Sources */,
-				85CCE2382063ECAD000560C3 /* NibView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
