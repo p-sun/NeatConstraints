@@ -50,12 +50,12 @@ public extension UIView {
         constraints.append(
             constrainTop(to: constrainable, nil, offset: insets.top)
         )
-
+        
         constraints.append(
             constrainBottom(to: constrainable, nil, offset: -insets.bottom)
         )
         
-        constrainEdgesHorizontally(to: otherview, leftInsets: insets.left, rightInsets: insets.right, usingSafeArea: usingSafeArea)
+        constraints += constrainEdgesHorizontally(to: otherview, leftInsets: insets.left, rightInsets: insets.right, usingSafeArea: usingSafeArea)
         
         return constraints
     }
@@ -277,12 +277,12 @@ public extension UIView {
     }
     
     /// Constrain to all sides, within the safe area.
-    /// NOTE: Not true for the bottom. TODO
+    // Note: Constraint to layout guides on the sides
     @discardableResult
     public func constrainWithinLayoutGuide(of viewController: UIViewController, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         let topConstraint = constrainTopToTopLayoutGuide(of: viewController, inset: insets.top)
         let horizontalConstraints = constrainEdgesHorizontally(to: viewController.view, leftInsets: insets.left, rightInsets: insets.right)
-        let bottomConstraint = constrainBottom(to: viewController.view, offset: -insets.bottom)
+        let bottomConstraint = constrainBottomToBottomLayoutGuide(of: viewController, inset: -insets.bottom)
         return [topConstraint] + horizontalConstraints + [bottomConstraint]
     }
     
@@ -300,7 +300,21 @@ public extension UIView {
         }
         return topConstraint
     }
-
+    
+    @discardableResult
+    public func constrainBottomToBottomLayoutGuide(of viewController: UIViewController, inset: CGFloat = 0) -> NSLayoutConstraint {
+        prepareForAutolayout()
+        
+        let bottomConstraint: NSLayoutConstraint
+        if #available(iOS 11.0, *) {
+            bottomConstraint = bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: inset)
+            bottomConstraint.isActive = true
+        } else {
+            bottomConstraint = bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor, constant: inset)
+            bottomConstraint.isActive = true
+        }
+        return bottomConstraint
+    }
     
     @discardableResult
     public func constrainBottomToTop(of view: Constrainable, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
