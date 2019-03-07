@@ -139,10 +139,17 @@ public extension UIView {
     }
     
     @discardableResult
-    public func constrainAspectRatio(to size: CGSize, isActive: Bool = true) -> NSLayoutConstraint {
+    public func constrainAspectRatio(to size: CGSize, relation: ConstraintRelation = .equal, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForAutolayout()
-        return heightAnchor.constraint(equalTo: widthAnchor,
-                                       multiplier: size.height/size.width).set(active: isActive)
+        
+        switch relation {
+        case .equal: return heightAnchor.constraint(equalTo: widthAnchor,
+                                                    multiplier: size.height/size.width).set(active: isActive)
+        case .equalOrLess: return heightAnchor.constraint(lessThanOrEqualTo: widthAnchor,
+                                                          multiplier: size.height/size.width).set(active: isActive)
+        case .equalOrGreater: return heightAnchor.constraint(greaterThanOrEqualTo: widthAnchor,
+                                                             multiplier: size.height/size.width).set(active: isActive)
+        }
     }
     
     // MARK: - Basic Elemental Constraints
@@ -293,11 +300,11 @@ public extension UIView {
         let topConstraint: NSLayoutConstraint
         if #available(iOS 11.0, *) {
             topConstraint = topAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: inset)
-            topConstraint.isActive = true
         } else {
             topConstraint = topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor, constant: inset)
-            topConstraint.isActive = true
         }
+        topConstraint.isActive = true
+        
         return topConstraint
     }
     
